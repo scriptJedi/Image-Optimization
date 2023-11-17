@@ -5,6 +5,11 @@ mkdir -p optimize_img/webp
 
 for file in *.*
 do
+    # Исключаем файлы с расширением svg
+    if [[ "$file" == *.svg ]]; then
+        continue
+    fi
+
     filename="${file%.*}"
 
     magick convert "$file" -resize 600 -quality 50 optimize_img/jpg/"$filename".jpg
