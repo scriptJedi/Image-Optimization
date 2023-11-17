@@ -1,5 +1,11 @@
 # Image-Optimization
 
+Для  использования скрипта обязательно наличие imageMagik (https://imagemagick.org/index.php)
+
+```
+brew install imagemagick
+```
+
 Помещаем скрипт в папку з выбранными изображениями, например /used_img/
 
 Чтобы установить права выполнения, выполняем
