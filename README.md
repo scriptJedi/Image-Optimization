@@ -1,26 +1,38 @@
-# Image-Optimization
+# Image Optimization
 
-Для  использования скрипта обязательно наличие imageMagik (https://imagemagick.org)
+## Prerequisites
 
-```
+Before using the script, ensure that ImageMagick is installed. If not, you can install it using Homebrew:
+
+```bash
 brew install imagemagick
 ```
 
-Помещаем скрипт в папку с выбранными изображениями, например /used_img/
-
-Чтобы установить права выполнения, выполняем в командной строке в той же директории, где находится скрипт.
+### Usage
+1. Place the script in the directory containing your selected images, e.g., /used_img/.
+2. In the command line, navigate to the script directory and grant execution permissions:
 
 ```bash
 chmod +x optimize_images.sh
 ```
-
-После этого запускаем скрипт:
+3. Run the script:
 
 ```bash
 ./optimize_images.sh
 ```
 
-Скрипт создает папку optimize_img в котором еще 2 папке jpg_png и webp в 2 варициях, 300px для телефона и 600px для десктопа
+### Script Output
+The script creates a folder named optimize_img, which contains two subfolders: jpg_png and webp. Each subfolder includes two versions of images, optimized for mobile (300px) and desktop (600px).
 
-Так же создаеться файл picture.html в котором демо вариант разметки для картинки через <picture> и source внутри него
-Туда подставляем пути к картинкам
+### HTML Markup
+Additionally, the script generates a picture.html file. This file provides a demo markup for implementing responsive images using the <picture> element and <source> tags. Replace the placeholder paths in the HTML file with the actual paths to your optimized images.
+
+```html
+<picture>
+  <source media="(max-width: 767.97px)" srcset="optimize_img/webp/01_300px.webp">
+  <source media="(min-width: 767.98px)" srcset="optimize_img/webp/01_600px.webp">
+  <img src="optimize_img/jpg_png/01.jpg" alt="Your Image Description">
+</picture>
+```
+
+Ensure to customize the paths accordingly for your project.
