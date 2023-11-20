@@ -49,8 +49,8 @@ do
     magick convert "$file" -resize $resize_small -quality $quality "$webp_folder/$filename"_300px.webp
 done
 
-echo '  <source media="(max-width: 767.97px)" srcset="'$webp_folder'/01_300px.webp">' >> picture.html
-echo '  <source media="(min-width: 767.98px)" srcset="'$webp_folder'/01_1200px.webp">' >> picture.html
+echo '  <source media="(max-width: 767.98px)" srcset="'$webp_folder'/01_300px.webp">' >> picture.html
+echo '  <source media="(min-width: 767.99px)" srcset="'$webp_folder'/01_1200px.webp">' >> picture.html
 echo '  <img src="'$jpg_png_folder'/01.jpg" alt="Your Image Description">' >> picture.html
 
 echo '</picture>' >> picture.html
