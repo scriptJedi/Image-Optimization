@@ -24,7 +24,7 @@ Additionally, the script generates a picture.html file. This file provides a dem
 
 ```html
 <picture>
-  <source media="(max-width: 767.98px)" srcset="imgs/webp/01_300px.webp">
+  <source media="(max-width: 767.98px)" srcset="imgs/webp/01_600px.webp">
   <source media="(min-width: 767.99px)" srcset="imgs/webp/01_1200px.webp">
   <img src="imgs/jpg_png/01.jpg" alt="Your Image Description">
 </picture>
