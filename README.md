@@ -17,7 +17,7 @@ brew install imagemagick
 ```
 
 ### Script Output
-The script creates a folder named imgs, which contains two subfolders: jpg_png and webp. Each subfolder includes two versions of images, optimized for mobile (300px) and desktop (1200px).
+The script creates a folder named imgs, which contains two subfolders: jpg and webp. Each subfolder includes two versions of images, optimized for mobile (300px) and desktop (1200px).
 
 ### HTML Markup
 Additionally, the script generates a picture.html file. This file provides a demo markup for implementing responsive images using the <picture> element and <source> tags. Replace the placeholder paths in the HTML file with the actual paths to your optimized images.
