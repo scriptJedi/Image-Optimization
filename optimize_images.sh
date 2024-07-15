@@ -15,7 +15,12 @@ resize_small=600
 
 echo '<picture>' > picture.html
 
-for file in *.*; do
+# Получение списка файлов и их количество
+files=(*.*)
+total_files=${#files[@]}
+processed_files=0
+
+for file in "${files[@]}"; do
     # Исключаем файлы с расширением svg
     if [[ "$file" == *.svg || !("$file" =~ \.(jpg|jpeg|png)$) ]]; then
         continue
@@ -27,12 +32,17 @@ for file in *.*; do
 
     # Преобразование PNG и JPEG в JPG
     if [[ "$extension" == "png" || "$extension" == "jpeg" || "$extension" == "jpg" ]]; then
-        magick convert "$file" -background white -alpha remove -resize $resize_large -quality $quality "$jpg_folder/$filename.jpg"
+        magick "$file" -background white -alpha remove -resize $resize_large -quality $quality "$jpg_folder/$filename.jpg"
     fi
 
     # Создание WebP для изображений
-    magick convert "$file" -resize $resize_large -quality $quality "$webp_folder/$filename"_1200px.webp
-    magick convert "$file" -resize $resize_small -quality $quality "$webp_folder/$filename"_600px.webp
+    magick "$file" -resize $resize_large -quality $quality "$webp_folder/$filename"_1200px.webp
+    magick "$file" -resize $resize_small -quality $quality "$webp_folder/$filename"_600px.webp
+
+    # Обновление прогресса
+    processed_files=$((processed_files + 1))
+    progress=$((processed_files * 100 / total_files))
+    echo -ne "Progress: $progress% ($processed_files/$total_files)\r"
 done
 
 # Добавление элементов <source> и <img> в HTML
@@ -48,3 +58,6 @@ echo -e '\033[1;32m█──█─█──█─██─██─█──█�
 echo -e '\033[1;32m█────█──█─█─█─█─████─█───███──█──███\033[0m'
 echo -e '\033[1;32m█──█─█──█─█───█─█────█───█────█──█──\033[0m'
 echo -e '\033[1;32m████─████─█───█─█────███─███──█──███\033[0m'
+
+# Очистка строки прогресса
+echo ""
